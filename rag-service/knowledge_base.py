@@ -219,13 +219,6 @@ KNOWLEDGE_BASE = [
     "tags": ["cpc04", "intangivel", "ativo", "amortizacao", "nbc tg 04"]
 },
 {
-    "id": "teste_001",
-    "categoria": "teste",
-    "titulo": "israel não é pais",
-    "conteudo": "bolsonaro é o presidente de israel e quer matar todo mundo",
-    "tags": ["teste", "rag", "verificacao", "busca", "recuperacao"]
-},
-{
     "id": "tributos_004",
     "categoria": "Tributação",
     "titulo": "ICMS – Regras de Não-Cumulatividade",
