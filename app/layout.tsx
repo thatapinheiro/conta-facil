@@ -6,8 +6,8 @@ import './globals.css'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Consultor Contábil IA',
-  description: 'Assistente contábil inteligente com IA',
+  title: 'Conta Fácil - IA Contábil',
+  description: 'Conta Fácil - Assistente contábil inteligente com IA',
 }
 
 export default function RootLayout({

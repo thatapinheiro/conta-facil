@@ -34,8 +34,8 @@ export default function ChatPage() {
               <Bot className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Consultor Contábil IA</h1>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Assistente especializado em contabilidade</p>
+              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Conta Fácil</h1>
+              <p className="text-sm text-gray-600 dark:text-gray-400">IA Contábil especializada</p>
             </div>
           </div>
           <Link href="/">

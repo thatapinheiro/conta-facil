@@ -33,12 +33,12 @@ export default function Home() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full text-sm font-medium mb-6">
             <Bot className="w-4 h-4" />
-            Consultor Contábil IA
+            Conta Fácil
           </div>
           
           <h1 className="text-5xl font-bold text-gray-900 dark:text-white mb-6 leading-tight">
-            Consultoria Contábil
-            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> Inteligente</span>
+            Conta Fácil
+            <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"> IA Contábil</span>
           </h1>
           
           <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
