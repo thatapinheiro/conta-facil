@@ -11,6 +11,12 @@ export async function streamCompletion(messages: Message[]): Promise<Response> {
       model: MODEL,
       messages,
       stream: true,
+      options: {
+        temperature: 0.1,
+        top_p: 0.9,
+        repeat_penalty: 1.1,
+        num_predict: 800
+      }
     }),
   })
 

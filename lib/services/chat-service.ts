@@ -2,21 +2,38 @@ import { StreamingTextResponse } from 'ai'
 import { streamCompletion } from '@/lib/ollama-client'
 import { SYSTEM_PROMPT } from '@/lib/prompts/system-prompt'
 import { ragClient } from '@/lib/services/rag-client'
+import { memoryService } from '@/lib/services/memory-service'
+import { precisionControl } from '@/lib/services/precision-control'
 import type { Message } from '@/lib/types/chat'
 
 export class ChatService {
-  static async processMessages(messages: Message[]): Promise<StreamingTextResponse> {
-    // Pega a última mensagem do usuário para busca RAG
+  static async processMessages(messages: Message[], sessionId: string = 'default'): Promise<StreamingTextResponse> {
+    // Pega a última mensagem do usuário
     const lastUserMessage = messages.filter(m => m.role === 'user').pop()
-    let enhancedSystemPrompt = SYSTEM_PROMPT
+    let ragContext = ''
+    let hasRAGContext = false
     
-    // Busca contexto RAG se houver mensagem do usuário
+    // Busca contexto RAG e memória conversacional
     if (lastUserMessage) {
-      const ragContext = await ragClient.getContextForLLM(lastUserMessage.content)
-      if (ragContext) {
-        enhancedSystemPrompt = `${SYSTEM_PROMPT}\n\n${ragContext}`
+      ragContext = await ragClient.getContextForLLM(lastUserMessage.content)
+      hasRAGContext = ragContext.length > 0
+      
+      const conversationContext = memoryService.getRelevantContext(sessionId, lastUserMessage.content)
+      
+      // Salva mensagem do usuário na memória
+      memoryService.addMessage(sessionId, lastUserMessage, ragContext)
+      
+      // Combina contextos
+      if (ragContext || conversationContext) {
+        ragContext = `${ragContext}\n\n${conversationContext}`
       }
     }
+
+    // Aplica controle de precisão ao prompt
+    const enhancedSystemPrompt = precisionControl.enhanceSystemPrompt(
+      `${SYSTEM_PROMPT}\n\n${ragContext}`,
+      hasRAGContext
+    )
 
     const fullMessages = [
       { role: 'system' as const, content: enhancedSystemPrompt },
