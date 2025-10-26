@@ -1,366 +1,214 @@
-"""Base de conhecimento contábil brasileira"""
+"""Base de conhecimento contábil brasileira OTIMIZADA"""
 
 KNOWLEDGE_BASE = [
+    # ----------------------------------------------------------------------
+    # MEI - CONSOLIDADO E ATUALIZADO (Substitui mei_001, mei_002, mei_003, mei_004, mei_005, mei_006, mei_007)
+    # ----------------------------------------------------------------------
     {
-        "id": "mei_001",
+        "id": "mei_001_geral",
         "categoria": "MEI",
-        "titulo": "Limites e DAS do MEI",
-        "conteudo": "MEI tem limite anual de R$ 81.000. DAS mensal: Comércio R$ 67, Serviços R$ 71, Comércio+Serviços R$ 72. Vencimento todo dia 20.",
-        "tags": ["mei", "das", "limite", "vencimento"]
+        "titulo": "Limites, Composição e Obrigações do DAS-MEI",
+        "conteudo": "O limite anual do MEI é R$ 81.000. O DAS é obrigatório (vencimento dia 20) e composto por 5% do Salário Mínimo (INSS) + R$ 1 (ICMS) ou R$ 5 (ISS). A DASN-SIMEI (Declaração Anual) é obrigatória e tem prazo até 31 de maio. O não pagamento gera multas, juros e exclusão.",
+        "tags": ["mei", "das", "limite", "inss", "dasn-simei", "prazo", "multa"]
     },
     {
-        "id": "simples_001", 
+        "id": "mei_002_desenquadramento",
+        "categoria": "MEI",
+        "titulo": "Regras de Desenquadramento por Faturamento e Outros",
+        "conteudo": "Desenquadramento por excesso de faturamento (acima de R$ 97.200) é obrigatório e retroativo a janeiro. O MEI também é desenquadrado se exercer atividade não permitida, abrir filial, ou ter sócio. O MEI pode ter apenas 1 empregado, recebendo SM ou piso, e deve recolher 3% INSS patronal e 8% FGTS sobre esse salário.",
+        "tags": ["desenquadramento", "excesso", "retroativo", "socio", "empregado", "inss patronal"]
+    },
+    # ----------------------------------------------------------------------
+    # SIMPLES NACIONAL - CONSOLIDADO (Simples_001, Simples_002, Simples_004 e Fator R)
+    # ----------------------------------------------------------------------
+    {
+        "id": "simples_001_calculo",
         "categoria": "Simples Nacional",
-        "titulo": "Limites Simples Nacional",
-        "conteudo": "Limite anual R$ 4.800.000. Sublimite estadual R$ 3.600.000. Anexos I a V com alíquotas progressivas. Cálculo: (RBT12 x Alíquota - Parcela Deduzir) / RBT12",
-        "tags": ["simples", "limite", "anexo", "aliquota"]
+        "titulo": "Limites e Cálculo da Alíquota Efetiva",
+        "conteudo": "Limite anual R$ 4.800.000 (Sublimite R$ 3.600.000). O cálculo do DAS utiliza a Alíquota Efetiva: (RBT12 x Alíquota Nominal - Parcela a Deduzir) / RBT12. O Fator R (Folha/Receita nos últimos 12 meses) deve ser >= 28% para tributação no Anexo III.",
+        "tags": ["simples", "limite", "rbt12", "aliquota efetiva", "fator r", "anexo"]
     },
     {
-        "id": "presumido_001",
-        "categoria": "Lucro Presumido", 
-        "titulo": "Cálculo Lucro Presumido",
-        "conteudo": "IRPJ: Base presunção x 15% + 10% se > R$ 20.000/mês. CSLL: Base x 9%. PIS: 0,65%. COFINS: 3%. Bases: Comércio 8%/12%, Serviços 32%/32%, Transporte 16%/16%",
-        "tags": ["presumido", "irpj", "csll", "pis", "cofins"]
+        "id": "simples_002_acessorias", # Mantém Simples_003
+        "categoria": "Simples Nacional",
+        "titulo": "Obrigações Acessórias do Simples Nacional",
+        "conteudo": "As principais obrigações são: PGDAS-D (mensal, para apuração do DAS), DEFIS (anual, informações econômicas e fiscais) e, se tiver funcionário, eSocial e DCTFWeb. Empresas do Simples não entregam ECF, ECD ou EFD ICMS/IPI (salvo exceções).",
+        "tags": ["simples", "obrigacoes", "defis", "pgdas-d", "esocial", "acessorias"]
+    },
+    # ----------------------------------------------------------------------
+    # LUCRO PRESUMIDO - ATUALIZADO (Presumido_001 e Presumido_002)
+    # ----------------------------------------------------------------------
+    {
+        "id": "presumido_001_completo",
+        "categoria": "Lucro Presumido",
+        "titulo": "Cálculo, Adicional e Bases de Presunção",
+        "conteudo": "IRPJ (15%) e CSLL (9%) incidem sobre a base presumida (Comércio 8%; Serviços 32%). Há adicional de 10% de IRPJ sobre o lucro presumido que exceder R$ 60.000/trimestre. O regime de PIS (0,65%) e COFINS (3%) é cumulativo. Pode optar pelo regime de Caixa ou Competência.",
+        "tags": ["presumido", "irpj", "csll", "bases", "adicional", "caixa", "competencia"]
+    },
+    # ----------------------------------------------------------------------
+    # LUCRO REAL (Tributos_002 e Tributos_001)
+    # ----------------------------------------------------------------------
+    {
+        "id": "lucroreal_001",
+        "categoria": "Lucro Real",
+        "titulo": "IRPJ, CSLL e Compensação de Prejuízos",
+        "conteudo": "IRPJ (15% + adicional de 10%) e CSLL (9%) são apurados sobre o Lucro Contábil ajustado (adições/exclusões). O regime permite a compensação de Prejuízos Fiscais, limitada a 30% do lucro real do período. PIS/COFINS são Não-Cumulativos (1,65% e 7,6%) com direito a crédito.",
+        "tags": ["lucro real", "irpj", "csll", "prejuizo", "pis", "cofins", "nao cumulativo"]
+    },
+    # ----------------------------------------------------------------------
+    # IMPOSTOS ESPECÍFICOS (ICMS, ISS)
+    # ----------------------------------------------------------------------
+    {
+        "id": "icms_001_completo", # Atualiza icms_001
+        "categoria": "ICMS/IPI",
+        "titulo": "ICMS-ST, DIFAL e Não-Cumulatividade (CIAP)",
+        "conteudo": "ICMS-ST é a antecipação por Substituto (cálculo por MVA). O DIFAL é o imposto ao destino em venda a não-contribuinte. A Não-Cumulatividade permite crédito sobre entradas, sendo o crédito de Imobilizado apropriado em 48 parcelas (CIAP).",
+        "tags": ["icms", "difal", "st", "mva", "ciap", "credito"]
     },
     {
-        "id": "icms_001",
-        "categoria": "ICMS",
-        "titulo": "Cálculo ICMS",
-        "conteudo": "Por dentro: Valor / (1 - alíquota). Por fora: Valor x alíquota. DIFAL: (Alíq destino - Alíq origem) x Base. ST: (Base ST x Alíq - ICMS próprio)",
-        "tags": ["icms", "difal", "substituicao", "tributaria"]
-    },
-    {
-        "id": "iss_001",
+        "id": "iss_001_local", # Mantém iss_001
         "categoria": "ISS",
-        "titulo": "ISS Serviços",
-        "conteudo": "Alíquota mínima 2%, máxima 5%. Base = preço do serviço. Retenção na fonte quando aplicável. Local da prestação define município competente.",
-        "tags": ["iss", "servicos", "retencao", "aliquota"]
+        "titulo": "ISS - Alíquotas e Regra de Localização",
+        "conteudo": "Alíquota mínima 2%, máxima 5% (LC 116/2003). A regra geral é que o imposto é devido no município do estabelecimento prestador, salvo exceções legais onde incide no local da prestação (ex: construção, limpeza, guincho).",
+        "tags": ["iss", "servicos", "retencao", "aliquota", "lc 116"]
     },
+    # ----------------------------------------------------------------------
+    # FOLHA DE PAGAMENTO E TRABALHISTA (folha_001, folha_002, folha_003, folha_004 + Adicionais)
+    # ----------------------------------------------------------------------
     {
-        "id": "folha_001",
+        "id": "folha_001_encargos",
         "categoria": "Folha Pagamento",
-        "titulo": "Encargos Folha",
-        "conteudo": "INSS Empresa: 20%. RAT: 1%, 2% ou 3% x FAP. FGTS: 8%. Terceiros conforme FPAS. INSS Empregado: tabela progressiva até R$ 7.507,49",
-        "tags": ["folha", "inss", "fgts", "rat", "terceiros"]
+        "titulo": "Encargos Patronais e Desconto INSS Empregado",
+        "conteudo": "Encargos Patronais: INSS Empresa (20% ou CPRB), RAT (1-3% x FAP) e Terceiros. FGTS: 8%. INSS Empregado é calculado por alíquotas progressivas (7,5% a 14%) sobre faixas salariais, retido na fonte. Teto de contribuição anualmente reajustado.",
+        "tags": ["folha", "inss", "fgts", "rat", "patronal", "progressiva"]
     },
     {
-        "id": "prazos_001",
-        "categoria": "Prazos",
-        "titulo": "Vencimentos Tributos",
-        "conteudo": "PIS/COFINS: dia 25. INSS: dia 20. FGTS: dia 7. IRPJ/CSLL Presumido: último dia útil do mês seguinte ao trimestre. ICMS/ISS: conforme estado/município",
-        "tags": ["prazos", "vencimento", "calendario", "tributario"]
+        "id": "folha_002_rotinas",
+        "categoria": "Folha Pagamento",
+        "titulo": "Rotinas de Admissão, Férias e 13º Salário",
+        "conteudo": "Admissão exige registro antes do início e envio do S-2200/S-2190 ao eSocial. Férias: 30 dias após 12 meses, pagamento (1/3 + salário) até 2 dias antes do início. 13º Salário: 1ª parcela até 30/Nov, 2ª até 20/Dez.",
+        "tags": ["admissao", "ferias", "decimo terceiro", "esocial", "clt"]
     },
     {
-    "id": "societario_001",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Estrutura do Balanço Patrimonial (BP)",
-    "conteudo": "BP: Ativo (Bens e Direitos, ordem decrescente de liquidez) = Passivo (Obrigações) + Patrimônio Líquido (PL). Ativo e Passivo divididos em Circulante (realizável/exigível até o próximo exercício) e Não Circulante.",
-    "tags": ["balanco", "bp", "ativo", "passivo", "pl", "estrutura"]
-},
-{
-    "id": "societario_002",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Estrutura da Demonstração do Resultado (DRE)",
-    "conteudo": "DRE apresenta a formação do resultado líquido. Sequência básica: Receita Bruta - Deduções = Receita Líquida. Receita Líquida - CMV/CPV/CSP = Lucro Bruto. Lucro Bruto - Despesas Operacionais = Lucro Antes IR/CSLL.",
-    "tags": ["dre", "resultado", "lucro", "receita", "despesa"]
-},
-{
-    "id": "societario_003",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Princípio da Competência e Caixa",
-    "conteudo": "Competência (CPC 00): Receitas e despesas são reconhecidas na ocorrência do fato gerador, independentemente de recebimento ou pagamento. Caixa: Reconhecimento apenas pelo fluxo financeiro (recebimento/pagamento).",
-    "tags": ["competencia", "caixa", "regime", "cpc"]
-},
-{
-    "id": "societario_004",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Depreciação, Amortização e Exaustão",
-    "conteudo": "Depreciação: Redução do valor de bens tangíveis (ex: máquinas) pelo uso ou obsolescência. Amortização: Redução do valor de bens intangíveis (ex: software). Exaustão: Redução do valor de recursos naturais (ex: jazidas).",
-    "tags": ["depreciacao", "amortizacao", "exaustao", "ativo"]
-},
-{
-    "id": "societario_005",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Impairment (Teste de Recuperabilidade)",
-    "conteudo": "NBC TG 01 (CPC 01) exige o teste de Impairment. Consiste em verificar se o valor contábil de um ativo excede seu valor recuperável (maior entre valor justo líquido de despesas de venda e valor em uso).",
-    "tags": ["impairment", "cpc 01", "valor recuperavel", "ativo"]
-},
-{
-    "id": "societario_006",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Patrimônio Líquido (PL)",
-    "conteudo": "O PL representa o valor residual dos ativos após deduzir todos os passivos. Composição: Capital Social, Reservas de Capital, Reservas de Lucros, Ajustes de Avaliação Patrimonial e Prejuízos Acumulados.",
-    "tags": ["pl", "patrimonio", "capital social", "reservas"]
-},
-{
-    "id": "analise_001",
-    "categoria": "Análise Financeira",
-    "titulo": "Índice de Liquidez Corrente",
-    "conteudo": "Calculado por: Ativo Circulante / Passivo Circulante. Indica a capacidade da empresa de pagar suas dívidas de curto prazo (até o próximo exercício). Idealmente deve ser superior a 1.",
-    "tags": ["liquidez", "indice", "analise", "curto prazo"]
-},
-{
-    "id": "analise_002",
-    "categoria": "Análise Financeira",
-    "titulo": "Índice de Liquidez Seca",
-    "conteudo": "Calculado por: (Ativo Circulante - Estoques) / Passivo Circulante. Exclui os estoques (menos líquidos) da análise. Oferece uma visão mais conservadora da capacidade de pagamento de curto prazo.",
-    "tags": ["liquidez", "indice", "analise", "estoques"]
-},
-{
-    "id": "custos_001",
-    "categoria": "Contabilidade de Custos",
-    "titulo": "Classificação de Custos",
-    "conteudo": "Custos Fixos: Não variam com o volume de produção (ex: aluguel). Custos Variáveis: Variam proporcionalmente ao volume de produção (ex: matéria-prima). Custos Diretos: Facilmente rastreáveis ao produto (ex: mão de obra direta). Custos Indiretos: Necessitam rateio (ex: energia da fábrica).",
-    "tags": ["custos", "fixos", "variaveis", "diretos", "indiretos"]
-},
-{
-    "id": "custos_002",
-    "categoria": "Contabilidade de Custos",
-    "titulo": "Custeio por Absorção vs. Variável",
-    "conteudo": "Custeio por Absorção: Imputa todos os custos (fixos e variáveis) aos produtos. Obrigatório para fins fiscais no Brasil. Custeio Variável: Considera apenas custos variáveis no produto; custos fixos vão direto para o resultado. Uso gerencial.",
-    "tags": ["custeio", "absorcao", "variavel", "rateio", "gerencial"]
-},
-{
-    "id": "custos_003",
-    "categoria": "Contabilidade de Custos",
-    "titulo": "Ponto de Equilíbrio (PE)",
-    "conteudo": "PE é o volume de vendas onde a Receita Total se iguala ao Custo Total, resultando em lucro zero. PE = Custos e Despesas Fixas Totais / Margem de Contribuição Unitária. PE indica o mínimo que a empresa precisa vender para não ter prejuízo.",
-    "tags": ["ponto de equilibrio", "pe", "margem de contribuicao", "lucro zero"]
-},
-{
-    "id": "tributos_001",
-    "categoria": "Tributação",
-    "titulo": "Recuperação de Créditos de PIS/COFINS",
-    "conteudo": "Regime Não Cumulativo (Lucro Real): Permite o crédito de PIS/COFINS (alíquotas 1,65% e 7,6%) sobre aquisições de bens e serviços essenciais à produção (insumos). É vedado o crédito no Lucro Presumido e Simples Nacional.",
-    "tags": ["pis", "cofins", "credito", "nao cumulativo", "lucro real"]
-},
-{
-    "id": "folha_002",
-    "categoria": "Folha Pagamento",
-    "titulo": "eSocial e DCTFWeb",
-    "conteudo": "eSocial: Plataforma que unifica o envio das informações fiscais, previdenciárias e trabalhistas. DCTFWeb: Declaração que substituiu a GFIP para débitos previdenciários, sendo gerada a partir das informações do eSocial e da EFD-Reinf.",
-    "tags": ["esocial", "dctfweb", "previdenciario", "obrigatorias"]
-},
-{
-    "id": "societario_007",
-    "categoria": "Remuneração Sócios",
-    "titulo": "Pró-Labore vs. Distribuição de Lucros",
-    "conteudo": "Pró-Labore é a remuneração dos sócios por seu trabalho na empresa, sendo obrigatório e sujeito à tributação de INSS (parte patronal e do sócio) e IRRF (se acima da isenção). Distribuição de Lucros é a parte do resultado líquido destinada aos sócios, sendo isenta de INSS e IRRF, desde que a empresa mantenha escrituração contábil e apure o lucro conforme a legislação.",
-    "tags": ["pro-labore", "distribuicao de lucros", "inss", "irrf", "socio", "remuneracao"]
-},
-{
-    "id": "sped_001",
-    "categoria": "Obrigações Acessórias",
-    "titulo": "SPED Fiscal (EFD ICMS/IPI)",
-    "conteudo": "SPED Fiscal é uma obrigação acessória que reúne informações sobre ICMS e IPI. Deve ser transmitido mensalmente, geralmente até o dia 20 do mês subsequente. Inclui registros de entradas, saídas, inventário, apuração e ajustes.",
-    "tags": ["sped", "efd", "icms", "ipi", "obrigacao"]
-},
-{
-    "id": "sped_002",
-    "categoria": "Obrigações Acessórias",
-    "titulo": "ECD – Escrituração Contábil Digital",
-    "conteudo": "A ECD substitui os livros Diário e Razão em formato digital. Obrigatória para empresas do Lucro Real e Lucro Presumido que distribuam lucros sem escrituração. Prazo: até o último dia útil de maio do ano seguinte ao exercício.",
-    "tags": ["ecd", "sped", "contabilidade", "digital", "obrigacao"]
-},
-{
-    "id": "sped_003",
-    "categoria": "Obrigações Acessórias",
-    "titulo": "ECF – Escrituração Contábil Fiscal",
-    "conteudo": "Substitui a DIPJ e consolida informações contábeis e fiscais para cálculo do IRPJ e CSLL. Obrigatória para todas as pessoas jurídicas, inclusive imunes e isentas. Prazo: último dia útil de julho do ano seguinte.",
-    "tags": ["ecf", "irpj", "csll", "sped", "obrigacao"]
-},
-{
-    "id": "reinf_001",
-    "categoria": "Obrigações Acessórias",
-    "titulo": "EFD-Reinf",
-    "conteudo": "Complementa o eSocial com informações sobre retenções e contribuições sem vínculo trabalhista. Inclui: serviços tomados/prestados, CPRB e comercialização da produção rural. Deve ser enviada até o dia 15 do mês seguinte.",
-    "tags": ["efd-reinf", "retencao", "servicos", "previdencia", "obrigacao"]
-},
-{
-    "id": "tributos_002",
-    "categoria": "Tributação",
-    "titulo": "IRPJ e CSLL no Lucro Real",
-    "conteudo": "Lucro Real apura IRPJ (15% + adicional de 10%) e CSLL (9%) sobre o lucro contábil ajustado por adições e exclusões fiscais. Pode ser trimestral ou anual. É o regime mais complexo, mas permite compensar prejuízos e créditos fiscais.",
-    "tags": ["irpj", "csll", "lucro real", "tributacao"]
-},
-{
-    "id": "tributos_003",
-    "categoria": "Tributação",
-    "titulo": "Planejamento Tributário",
-    "conteudo": "Planejamento tributário visa reduzir legalmente a carga fiscal por meio da escolha do regime mais adequado, aproveitamento de incentivos, créditos e reorganizações societárias. Deve respeitar o princípio da legalidade e evitar a elisão abusiva.",
-    "tags": ["planejamento", "tributario", "carga tributaria", "elisao", "regime"]
-},
-{
-    "id": "gerencial_001",
-    "categoria": "Contabilidade Gerencial",
-    "titulo": "Margem de Contribuição e Alavancagem Operacional",
-    "conteudo": "Margem de contribuição = Receita - Custos e Despesas Variáveis. Indica quanto sobra para cobrir os custos fixos e gerar lucro. Alavancagem operacional mede o impacto da variação nas vendas sobre o lucro operacional.",
-    "tags": ["gerencial", "margem", "alavancagem", "lucro", "analise"]
-},
-{
-    "id": "gerencial_002",
-    "categoria": "Contabilidade Gerencial",
-    "titulo": "Orçamento Empresarial (Budget)",
-    "conteudo": "O orçamento empresarial projeta receitas, custos e despesas para um período, servindo como base de controle e avaliação de desempenho. Tipos: Estático, Flexível e Contínuo (Rolling Forecast).",
-    "tags": ["orcamento", "budget", "planejamento", "controle", "gerencial"]
-},
-{
-    "id": "cpc_001",
-    "categoria": "Normas Contábeis (CPC)",
-    "titulo": "CPC 27 – Ativo Imobilizado",
-    "conteudo": "Define o reconhecimento de imobilizados quando há probabilidade de benefícios econômicos futuros e mensuração confiável. O ativo deve ser depreciado sistematicamente ao longo de sua vida útil. Valor residual deve ser considerado.",
-    "tags": ["cpc27", "imobilizado", "ativo", "depreciacao", "nbc tg 27"]
-},
-{
-    "id": "cpc_002",
-    "categoria": "Normas Contábeis (CPC)",
-    "titulo": "CPC 04 – Ativo Intangível",
-    "conteudo": "Estabelece critérios de reconhecimento para ativos intangíveis, como marcas, softwares e patentes. Devem ser identificáveis, controláveis e capazes de gerar benefícios futuros. Amortização ocorre durante a vida útil estimada.",
-    "tags": ["cpc04", "intangivel", "ativo", "amortizacao", "nbc tg 04"]
-},
-{
-    "id": "tributos_004",
-    "categoria": "Tributação",
-    "titulo": "ICMS – Regras de Não-Cumulatividade",
-    "conteudo": "A não-cumulatividade do ICMS permite o crédito sobre entradas de mercadorias para comercialização ou insumos para industrialização. Créditos de Ativo Imobilizado (CIAP) são apropriados em 48 parcelas mensais. Vedado em casos de isenção ou não-incidência na saída subsequente.",
-    "tags": ["icms", "nao cumulativo", "credito", "ciap", "fiscal"]
-},
-{
-    "id": "tributos_005",
-    "categoria": "Tributação",
-    "titulo": "Substituição Tributária (ICMS-ST)",
-    "conteudo": "ICMS-ST é o regime de arrecadação onde a responsabilidade pelo imposto devido nas operações subsequentes é atribuída a um único contribuinte (Substituto). O cálculo envolve MVA (Margem de Valor Agregado) ou pauta fiscal, garantindo o recolhimento antecipado.",
-    "tags": ["icms-st", "substituicao tributaria", "mva", "antecipacao", "fiscal"]
-},
-{
-    "id": "obrigacao_005",
-    "categoria": "Obrigações Acessórias",
-    "titulo": "Certidão Negativa de Débitos (CND)",
-    "conteudo": "A CND atesta a regularidade fiscal de uma pessoa jurídica junto aos órgãos (RFB, PGFN, Estados e Municípios). É essencial para participação em licitações, obtenção de crédito e comprovação de idoneidade fiscal. Validade de 180 dias ou conforme órgão emissor.",
-    "tags": ["cnd", "certidao", "regularidade fiscal", "debito", "rfb"]
-},
-{
-    "id": "obrigacao_006",
-    "categoria": "Obrigações Acessórias",
-    "titulo": "Portal e-CAC e Caixa Postal",
-    "conteudo": "O e-CAC (Centro Virtual de Atendimento) é o portal da Receita Federal para serviços virtuais (Consulta de Situação Fiscal, Extrato Simples Nacional). A Caixa Postal é o canal de comunicação oficial para intimações e avisos fiscais, exigindo acompanhamento diário.",
-    "tags": ["e-cac", "rfb", "caixa postal", "intimacao", "servicos"]
-},
-{
-    "id": "folha_003",
-    "categoria": "Folha Pagamento",
-    "titulo": "Obrigações do Contrato de Trabalho – Registro",
-    "conteudo": "O empregador deve registrar o funcionário antes do início das atividades, formalizando o contrato de trabalho (CLT). Inclui: exame admissional, registro em livro/ficha/sistema, anotação na CTPS e envio dos eventos S-2200 e S-2190 (admissão) ao eSocial.",
-    "tags": ["clt", "contrato", "trabalho", "admissao", "esocial"]
-},
-{
-    "id": "folha_004",
-    "categoria": "Folha Pagamento",
-    "titulo": "Férias e 13º Salário",
-    "conteudo": "Férias: Direito a 30 dias após 12 meses (período aquisitivo). Pagamento: 1/3 constitucional mais o salário normal, pago até 2 dias antes do início. 13º Salário: Pago em duas parcelas (1ª até 30/Nov, 2ª até 20/Dez).",
-    "tags": ["ferias", "decimo terceiro", "encargos", "trabalhista"]
-},
-{
-    "id": "societario_008",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Demonstração dos Fluxos de Caixa (DFC)",
-    "conteudo": "A DFC é obrigatória e detalha a movimentação do caixa em 3 atividades: Operacionais (receitas/despesas), Investimento (ativos não circulantes) e Financiamento (empréstimos/capital próprio). Métodos: Direto (recebimentos/pagamentos) ou Indireto (ajuste do Lucro Líquido).",
-    "tags": ["dfc", "fluxo de caixa", "direto", "indireto", "cpc 03"]
-},
-{
-    "id": "societario_009",
-    "categoria": "Contabilidade Geral",
-    "titulo": "Provisões e Passivos Contingentes",
-    "conteudo": "Provisão (NBC TG 25/CPC 25): Reconhecida quando há obrigação presente resultante de evento passado, é provável a saída de recursos e o valor pode ser estimado confiavelmente. Passivo Contingente: Possível obrigação não reconhecida (geralmente ações judiciais de baixa probabilidade de perda).",
-    "tags": ["provisao", "passivo", "contingente", "cpc 25", "risco"]
-},
-{
-    "id": "simples_002",
-    "categoria": "Simples Nacional",
-    "titulo": "Fator R no Simples Nacional",
-    "conteudo": "O Fator R determina a tributação de atividades dos Anexos III ou V. Se a Razão entre a Folha de Salários (12 meses) e a Receita Bruta (12 meses) for igual ou superior a 28%, a empresa é tributada pelo Anexo III (alíquotas menores); caso contrário, pelo Anexo V (alíquotas maiores).",
-    "tags": ["simples", "fator r", "anexo v", "anexo iii", "folha"]
-},
-{
-    "id": "presumido_002",
-    "categoria": "Lucro Presumido",
-    "titulo": "Regime de Caixa vs. Competência no Presumido",
-    "conteudo": "O Lucro Presumido pode optar pelo regime de caixa (reconhecimento de receita no recebimento) ou competência (reconhecimento no fato gerador). A opção pelo regime de caixa deve ser formalizada e afeta a base de cálculo de PIS/COFINS, IRPJ e CSLL.",
-    "tags": ["presumido", "caixa", "competencia", "regime", "irpj"]
-},
-{
-    "id": "reforma_001",
-    "categoria": "Reforma Tributária",
-    "titulo": "Visão Geral da Reforma - Transição",
-    "conteudo": "A Emenda Constitucional 132/2023 (Reforma Tributária) substitui 5 tributos (PIS, COFINS, IPI, ICMS e ISS) por 3: IBS (Estadual/Municipal), CBS (Federal) e Imposto Seletivo (IS). O período de transição dos impostos antigos para o novo sistema (IVA Dual) iniciará em 2026.",
-    "tags": ["reforma", "iva", "ibs", "cbs", "imposto seletivo", "transicao"]
-},
-{
-    "id": "custos_004",
-    "categoria": "Contabilidade de Custos",
-    "titulo": "Custos Conjuntos e Subprodutos",
-    "conteudo": "Custos Conjuntos são os custos de produção de bens que surgem simultaneamente (coprodutos). A alocação é feita por métodos como Valor de Venda no Ponto de Separação. Subproduto é um produto secundário, de valor de venda baixo, cujas receitas geralmente abatem o custo de produção do produto principal.",
-    "tags": ["custos", "conjuntos", "subproduto", "rateio", "industrial"]
-},
-{
-    "id": "mei_002",
-    "categoria": "MEI",
-    "titulo": "Composição e Reajuste do DAS-MEI",
-    "conteudo": "O valor mensal do DAS-MEI é fixo e composto por: 5% do Salário Mínimo (referente à Contribuição Previdenciária, INSS), mais R$ 1,00 (ICMS, para Comércio/Indústria) ou R$ 5,00 (ISS, para Serviços). O valor é reajustado anualmente junto ao Salário Mínimo.",
-    "tags": ["mei", "das", "inss", "icms", "iss", "reajuste"]
-},
-{
-    "id": "mei_003",
-    "categoria": "MEI",
-    "titulo": "Obrigatoriedade e Penalidades do DAS",
-    "conteudo": "O pagamento do DAS é obrigatório, mesmo sem faturamento. O não pagamento gera juros e multa (0,33% ao dia, limitada a 20% do valor). O atraso por mais de 12 meses e a inadimplência levam à exclusão do Simples Nacional e à cobrança da dívida ativa pela PGFN.",
-    "tags": ["das", "multa", "juros", "inadimplencia", "divida ativa", "cobranca"]
-},
-{
-    "id": "mei_004",
-    "categoria": "MEI",
-    "titulo": "Declaração Anual do MEI (DASN-SIMEI)",
-    "conteudo": "Todo MEI é obrigado a entregar a Declaração Anual do Simples Nacional (DASN-SIMEI) até o dia 31 de maio. Nela, o MEI informa a Receita Bruta Total e a Receita Bruta com Comércio/Indústria (sujeita a ICMS) ou Serviços (sujeita a ISS) do ano anterior, além da informação de empregado.",
-    "tags": ["dasn-simei", "declaracao anual", "prazo", "receita bruta", "obrigatoria"]
-},
-{
-    "id": "mei_005",
-    "categoria": "MEI",
-    "titulo": "Obrigações e Limites na Contratação de Funcionário",
-    "conteudo": "O MEI pode contratar apenas 1 (um) empregado, que deve receber no máximo 1 (um) salário mínimo ou o piso salarial da categoria. O MEI fica obrigado a recolher FGTS (8%) e INSS patronal (3%) sobre o salário desse empregado, além de outras obrigações trabalhistas (eSocial).",
-    "tags": ["empregado", "funcionario", "salario minimo", "inss patronal", "fgts", "trabalhista"]
-},
-{
-    "id": "mei_006",
-    "categoria": "Desenquadramento MEI por Faturamento",
-    "titulo": "Regras de Desenquadramento por Excesso de Receita",
-    "conteudo": "Se o MEI faturar entre R$ 81.000,01 e R$ 97.200 (limite de 20%), deverá recolher o DAS normal e a multa sobre o excesso de receita. Se ultrapassar R$ 97.200, o desenquadramento é obrigatório e retroativo a janeiro, devendo recolher os impostos como Simples Nacional desde o início do ano.",
-    "tags": ["desenquadramento", "excesso", "limite", "multa", "simples nacional", "retroativo"]
-},
-{
-    "id": "mei_007",
-    "categoria": "Desenquadramento MEI",
-    "titulo": "Desenquadramento por Atividade ou Sócio",
-    "conteudo": "O MEI é desenquadrado se exercer atividade não permitida (ver lista do CGSN), se abrir filial, se participar como sócio ou administrador em outra empresa, ou se incluir sócio em sua estrutura. Nesses casos, o desenquadramento deve ser comunicado à Receita Federal e a empresa passa para o Simples Nacional ou Lucro Presumido.",
-    "tags": ["desenquadramento", "atividade", "sociedade", "filial", "cgsn"]
-},
-{
-    "id": "simples_003",
-    "categoria": "Simples Nacional",
-    "titulo": "Obrigações Acessórias do Simples Nacional",
-    "conteudo": "As principais obrigações do Simples Nacional são: PGDAS-D (mensal, para apuração do DAS), DEFIS (anual, informações econômicas e fiscais) e, se tiver funcionário, eSocial e DCTFWeb. Empresas do Simples não entregam ECF, ECD ou EFD ICMS/IPI, salvo exceções estaduais.",
-    "tags": ["simples", "obrigacoes", "defis", "pgdas-d", "esocial", "acessorias"]
-},
-{
-    "id": "simples_004",
-    "categoria": "Simples Nacional",
-    "titulo": "Cálculo do Simples - Alíquota Efetiva",
-    "conteudo": "O Simples Nacional utiliza a Alíquota Efetiva, que é o percentual real de imposto. Ela é calculada pela fórmula: (RBT12 * Alíquota Nominal - Parcela a Deduzir) / RBT12. O resultado deve ser aplicado sobre a Receita Bruta do Mês para encontrar o valor do DAS.",
-    "tags": ["simples", "calculo", "aliquota efetiva", "rbt12", "das"]
-}
-
-
+        "id": "folha_003_rescisao",
+        "categoria": "Folha Pagamento - Rescisão",
+        "titulo": "Modalidades de Rescisão Contratual (CLT)",
+        "conteudo": "As principais são: Sem Justa Causa (aviso prévio, multa 40% FGTS); Por Justa Causa (perde quase todos os direitos); Pedido de Demissão; e Rescisão por Acordo (Lei 13.467/17 - metade do aviso, multa 20% FGTS, 80% do FGTS liberado).",
+        "tags": ["rescisao", "justa causa", "acordo", "fgts", "aviso previo", "clt"]
+    },
+    {
+        "id": "folha_004_jornada",
+        "categoria": "Folha Pagamento - Trabalhista",
+        "titulo": "Jornada de Trabalho e Horas Extras",
+        "conteudo": "Jornada padrão de 8h/dia, 44h/semana, com limite de 2h extras/dia. Horas extras são remuneradas com adicional mínimo de 50% (100% em domingos/feriados, salvo compensação).",
+        "tags": ["jornada", "horas extras", "adicional", "clt"]
+    },
+    # ----------------------------------------------------------------------
+    # OBRIGAÇÕES ACESSÓRIAS (Consolidações e Prazos)
+    # ----------------------------------------------------------------------
+    {
+        "id": "obrigacao_001_prazos", # Mantém prazos_001
+        "categoria": "Obrigações Acessórias - Prazos",
+        "titulo": "Vencimentos de Tributos Comuns",
+        "conteudo": "INSS/DCTFWeb: dia 20. PIS/COFINS: dia 25. FGTS: dia 7. IRPJ/CSLL Presumido: último dia útil do mês seguinte ao trimestre. ICMS/ISS: conforme legislação estadual/municipal. EFD-Reinf: dia 15.",
+        "tags": ["prazos", "vencimento", "calendario", "tributario", "dctfweb", "reinf"]
+    },
+    {
+        "id": "obrigacao_002_sped", # Mantém sped_001, sped_002, sped_003, reinf_001
+        "categoria": "Obrigações Acessórias - SPED",
+        "titulo": "ECD, ECF, EFD-Reinf e EFD ICMS/IPI",
+        "conteudo": "SPED Contábil (ECD/Diário e Razão - Prazo Maio). SPED Fiscal (EFD ICMS/IPI - mensal, conforme UF). ECF (Substitui DIPJ - Prazo Julho). EFD-Reinf complementa eSocial com retenções e contribuições (Prazo dia 15).",
+        "tags": ["sped", "ecd", "ecf", "reinf", "icms", "ipi", "obrigacao"]
+    },
+    {
+        "id": "obrigacao_003_fiscal", # Mantém obrigacao_005, obrigacao_006
+        "categoria": "Obrigações Acessórias - Fiscalização",
+        "titulo": "CND, e-CAC e Caixa Postal",
+        "conteudo": "A CND atesta a regularidade fiscal para licitações e créditos. O e-CAC (Receita Federal) é o portal de serviços e fiscalização. A Caixa Postal no e-CAC é o canal oficial de intimações e deve ser acompanhada diariamente.",
+        "tags": ["cnd", "certidao", "e-cac", "rfb", "intimacao"]
+    },
+    # ----------------------------------------------------------------------
+    # CONTABILIDADE GERAL (societario_001, 002, 003, 004, 005, 006, 008, 009 + CPC)
+    # ----------------------------------------------------------------------
+    {
+        "id": "contabil_001_bp_dre", # Consolida societario_001, 002, 006
+        "categoria": "Contabilidade Geral",
+        "titulo": "Estrutura do BP, DRE e PL",
+        "conteudo": "BP: Ativo = Passivo + PL. Ativo e Passivo são Circulante/Não Circulante. PL (Capital, Reservas, Prejuízos) é o valor residual. DRE: Receita Bruta - Deduções = Receita Líquida; - CMV/CPV = Lucro Bruto; - Despesas Operacionais = Lucro Antes IR/CSLL.",
+        "tags": ["balanco", "dre", "pl", "ativo", "passivo", "estrutura"]
+    },
+    {
+        "id": "contabil_002_principios", # Atualiza societario_003
+        "categoria": "Contabilidade Geral",
+        "titulo": "Princípio da Competência (CPC 00) e Caixa",
+        "conteudo": "Competência (obrigatório para contabilidade fiscal): Reconhecimento de receita/despesa na ocorrência do fato gerador. Caixa: Reconhecimento apenas pelo fluxo financeiro (recebimento/pagamento). O CPC 00 reitera a competência como base fundamental.",
+        "tags": ["competencia", "caixa", "regime", "cpc 00"]
+    },
+    {
+        "id": "contabil_003_ativo", # Consolida societario_004, 005, cpc_001, cpc_002
+        "categoria": "Contabilidade Geral - Ativo",
+        "titulo": "CPC 27 (Imobilizado), CPC 04 (Intangível) e Impairment",
+        "conteudo": "Imobilizado (CPC 27/Depreciação) e Intangível (CPC 04/Amortização) são ativos de longo prazo. Ambos devem ser submetidos ao Teste de Recuperabilidade (Impairment - CPC 01) para verificar se o valor contábil excede o valor recuperável.",
+        "tags": ["depreciacao", "amortizacao", "imobilizado", "intangivel", "impairment", "cpc"]
+    },
+    {
+        "id": "contabil_004_dfc_provisoes", # Consolida societario_008, 009
+        "categoria": "Contabilidade Geral - Obrigações",
+        "titulo": "DFC (CPC 03) e Provisões/Contingentes (CPC 25)",
+        "conteudo": "DFC (Obrigatória): Detalha o fluxo de caixa em Operacionais, Investimento e Financiamento (métodos Direto/Indireto). Provisão (CPC 25): Obrigação presente com saída de recursos provável. Passivo Contingente: Possível obrigação não reconhecida (baixa probabilidade).",
+        "tags": ["dfc", "fluxo de caixa", "provisao", "passivo", "contingente", "cpc"]
+    },
+    # ----------------------------------------------------------------------
+    # CUSTOS E GERENCIAL (custos_001, 002, 003, 004 + gerencial_001, 002)
+    # ----------------------------------------------------------------------
+    {
+        "id": "custos_001_completo",
+        "categoria": "Contabilidade de Custos",
+        "titulo": "Classificação, Custeio (Absorção/Variável) e Ponto de Equilíbrio",
+        "conteudo": "Custos Fixos (não variam) vs. Variáveis (variam com produção). Absorção (fiscal, inclui fixos/variáveis) vs. Variável (gerencial, inclui só variáveis). PE (Ponto de Equilíbrio): Vendas para lucro zero (PE = Fixos / Margem de Contribuição Unitária).",
+        "tags": ["custos", "fixos", "variaveis", "absorcao", "pe", "margem de contribuicao"]
+    },
+    {
+        "id": "custos_002_gerencial",
+        "categoria": "Contabilidade Gerencial",
+        "titulo": "Orçamento Empresarial e Alavancagem Operacional",
+        "conteudo": "O orçamento (Budget) projeta receitas e despesas para controle de desempenho. A Margem de Contribuição (Receita - Variáveis) mede o que sobra para cobrir fixos. Alavancagem operacional mede o impacto da variação de vendas no lucro.",
+        "tags": ["orcamento", "budget", "margem", "alavancagem", "gerencial"]
+    },
+    # ----------------------------------------------------------------------
+    # TÓPICOS GERAIS E NOVOS
+    # ----------------------------------------------------------------------
+    {
+        "id": "geral_001_remuneracao", # Mantém societario_007
+        "categoria": "Remuneração Sócios",
+        "titulo": "Pró-Labore vs. Distribuição de Lucros",
+        "conteudo": "Pró-Labore é a remuneração pelo trabalho, obrigatória e sujeita a INSS e IRRF. Distribuição de Lucros é a parte do resultado, isenta de INSS/IRRF, desde que a empresa mantenha escrituração contábil e apure o lucro conforme a legislação.",
+        "tags": ["pro-labore", "distribuicao de lucros", "inss", "irrf", "socio"]
+    },
+    {
+        "id": "geral_002_planejamento", # Mantém tributos_003
+        "categoria": "Tributação",
+        "titulo": "Planejamento Tributário (Legalidade e Elisão)",
+        "conteudo": "Planejamento tributário visa reduzir legalmente a carga fiscal pela escolha do regime, aproveitamento de créditos e incentivos. Deve evitar a elisão abusiva, respeitando o princípio da legalidade.",
+        "tags": ["planejamento", "tributario", "carga tributaria", "elisao", "regime"]
+    },
+    {
+        "id": "geral_003_reforma", # Mantém reforma_001
+        "categoria": "Reforma Tributária",
+        "titulo": "Visão Geral da Reforma (EC 132/2023)",
+        "conteudo": "A EC 132/2023 substitui 5 tributos (PIS, COFINS, IPI, ICMS, ISS) por 3 (IBS, CBS e Imposto Seletivo). O novo sistema (IVA Dual) terá um período de transição que se iniciará em 2026.",
+        "tags": ["reforma", "iva", "ibs", "cbs", "imposto seletivo", "transicao"]
+    },
+    {
+        "id": "geral_004_liquidez", # Consolida analise_001, analise_002
+        "categoria": "Análise Financeira",
+        "titulo": "Índices de Liquidez (Corrente e Seca)",
+        "conteudo": "Liquidez Corrente (Ativo Circulante / Passivo Circulante) indica capacidade de pagamento de curto prazo. Liquidez Seca ((AC - Estoques) / PC) oferece visão mais conservadora ao excluir os estoques, menos líquidos.",
+        "tags": ["liquidez", "indice", "analise", "curto prazo", "capital de giro"]
+    }
 ]
+
+# As funções auxiliares permanecem as mesmas, mas agora operam sobre a base atualizada:
 
 def get_all_documents():
     """Retorna todos os documentos da base de conhecimento"""
